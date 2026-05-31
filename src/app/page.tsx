@@ -1,172 +1,107 @@
-export default function Home() {
-  const color = "#f59e0b";
-  const colorLight = "#fffbeb";
-  const colorDark = "#b45309";
-
+﻿"use client";
+const P = {
+  name: "EntityResolution",
+  tagLabel: "Deduplication IA · Resolution d'entites · Donnees propres",
+  taglines: ["Des doublons partout.", "Un seul client par client.", "Des decisions sur des vraies donnees."],
+  taglineAccentIdx: 1,
+  desc: "EntityResolution identifie et fusionne automatiquement les doublons dans vos bases clients, fournisseurs et produits. Des donnees propres, des decisions fiables, un seul profil par entite.",
+  accent: "#22D3EE",
+  accentDim: "rgba(34,211,238,0.1)",
+  accentBorder: "rgba(34,211,238,0.25)",
+  accentGlow: "rgba(34,211,238,0.08)",
+  waText: "EntityResolution",
+  navLinks: [{ label: "Fonctionnalites", href: "#features" }, { label: "Comment ca marche", href: "#process" }, { label: "Contact", href: "#cta" }],
+  metrics: [{ value: "99%", label: "precision de matching" }, { value: "10M+", label: "enregistrements traites" }, { value: "-85%", label: "doublons elimines" }, { value: "24h", label: "traitement complet" }],
+  features: [
+    { icon: "🔗", title: "Matching flou intelligent", desc: "L'IA detecte les doublons malgre les fautes de frappe, variations de nom, abreviations et formats differents. Bien au-dela d'un simple compare de chaines." },
+    { icon: "🏢", title: "Resolution multi-source", desc: "Fusionnez les profils venant de votre CRM, ERP, e-commerce et bases tierces. Un golden record unique et a jour pour chaque entite." },
+    { icon: "🔄", title: "Deduplication continue", desc: "Au-dela du nettoyage initial, EntityResolution surveille les nouvelles entrees et bloque les doublons en temps reel a la source." },
+  ],
+  steps: [
+    { num: "01", title: "Importez vos bases de donnees", desc: "CSV, SQL, API — EntityResolution ingere vos sources de donnees. Analyse automatique des champs, detection des colonnes d'identite." },
+    { num: "02", title: "L'IA construit les paires candidates", desc: "Blocking intelligent pour limiter les comparaisons, scoring de similarite multicritere, clustering des entites matchees. Rapport de confiance par paire." },
+    { num: "03", title: "Validez et fusionnez", desc: "Interface de validation des cas limites, fusion automatique des cas evidents. Exportez votre base propre ou connectez en temps reel." },
+  ],
+  testimonials: [
+    { quote: "On avait 40% de doublons dans notre CRM. EntityResolution les a identifies et fusionnes en une nuit. Nos campagnes marketing sont enfin precises.", author: "Thomas L.", role: "Data Manager, Retailer" },
+    { quote: "Nos analyses financieres etaient faussees par des doublons fournisseurs. Depuis EntityResolution, on a une vision nette de nos depenses.", author: "Zo R.", role: "CFO, Groupe Madagascar" },
+  ],
+  ctaTitle: "Des donnees propres. Des decisions fiables.",
+  ctaDesc: "Demo en 20 minutes. Analyse de vos doublons en 24h. ROI mesurable des la premiere semaine.",
+  ctaPrimary: "Reserver une demo",
+  footerTagline: "Agent IA de deduplication et resolution d'entites",
+};
+export default function Page() {
+  const bg = "#04080F"; const bg2 = "#070D1B"; const card = "rgba(255,255,255,0.04)"; const border = "rgba(255,255,255,0.09)";
+  const gold = "#D4AF37"; const goldDim = "rgba(212,175,55,0.1)"; const goldBorder = "rgba(212,175,55,0.28)";
+  const txt1 = "#F0EDE6"; const txt2 = "#8B9DB5"; const txt3 = "#3C5068";
+  const { accent, accentDim, accentBorder, accentGlow } = P;
   return (
-    <main style={{ fontFamily: "var(--font-body)" }}>
-      {/* NAVBAR */}
-      <nav style={{ background: "#fff", borderBottom: "1px solid #fde68a", position: "sticky", top: 0, zIndex: 50 }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px", height: 64, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <span style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 22, color }}>EntityResolution</span>
-          <div style={{ display: "flex", gap: 12 }}>
-            <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' type="button" target="_blank" rel="noopener noreferrer"
-              style={{ background: color, color: "#fff", padding: "8px 20px", borderRadius: 8, fontWeight: 600, fontSize: 14, textDecoration: "none" }}>
-              Réserver une démo
-            </button>
-          </div>
+    <div style={{ minHeight:"100vh", background:bg, color:txt1 }}>
+      <style>{`*, *::before, *::after { box-sizing: border-box; } html { scroll-behavior: smooth; } body { -webkit-font-smoothing: antialiased; overflow-x: hidden; } @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } } @keyframes pulseDot { 0%,100%{ opacity:1; transform:scale(1); } 50%{ opacity:.4; transform:scale(1.6); } } .wk-card { transition: background .3s, border-color .3s, transform .35s cubic-bezier(.34,1.2,.64,1); } .wk-card:hover { background: rgba(255,255,255,0.07) !important; border-color: ${accentBorder} !important; transform: translateY(-6px) !important; } .wk-btn { transition: opacity .2s, transform .2s, box-shadow .2s; } .wk-btn:hover { opacity:.9; transform:translateY(-2px); box-shadow:0 12px 32px rgba(212,175,55,.18); } .wk-wa { transition: opacity .2s, transform .2s; } .wk-wa:hover { opacity:.9; transform:translateY(-2px); } .wk-nav-link { color: #8B9DB5; text-decoration:none; font-size:14px; font-weight:500; transition:color .2s; } .wk-nav-link:hover { color: #F0EDE6; } @media(max-width:640px){ .wk-hide-sm{ display:none!important; } .wk-hero-title{ font-size:2.4rem!important; } }`}</style>
+      <nav style={{ position:"sticky", top:0, zIndex:100, background:"rgba(4,8,15,0.82)", backdropFilter:"blur(20px)", borderBottom:`1px solid ${border}`, padding:"0 40px", height:60, display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+        <span style={{ fontSize:18, fontWeight:800, letterSpacing:"-0.5px", color:txt1 }}>{P.name}<span style={{ color:gold }}>.</span></span>
+        <div style={{ display:"flex", gap:28, alignItems:"center" }}>
+          <div className="wk-hide-sm" style={{ display:"flex", gap:24 }}>{P.navLinks.map(l => <a key={l.label} href={l.href} className="wk-nav-link">{l.label}</a>)}</div>
+          <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' className="wk-btn" style={{ background:gold, color:"#04080F", border:"none", borderRadius:8, padding:"8px 18px", fontWeight:700, fontSize:13.5, cursor:"pointer", fontFamily:"inherit" }}>Reserver →</button>
         </div>
       </nav>
-
-      {/* HERO */}
-      <section style={{ background: `linear-gradient(135deg, ${colorLight} 0%, #fff 60%)`, padding: "80px 24px 64px" }}>
-        <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center" }}>
-          <span style={{ display: "inline-block", background: "#fde68a", color: colorDark, padding: "6px 16px", borderRadius: 20, fontSize: 13, fontWeight: 600, marginBottom: 24 }}>
-            Entity Resolution &amp; déduplication ML
-          </span>
-          <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px, 6vw, 60px)", fontWeight: 800, color: "#78350f", lineHeight: 1.15, marginBottom: 24 }}>
-            Un client = un profil.<br />
-            <span style={{ color }}>Toujours. À l&apos;échelle.</span>
-          </h1>
-          <p style={{ fontSize: 18, color: "#4b5563", marginBottom: 40, lineHeight: 1.7 }}>
-            Matching ML multi-source 99.3% de précision — un client, un profil unifié, zéro doublon même sur des bases hétérogènes.
-          </p>
-          <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap", marginBottom: 56 }}>
-            <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' type="button" target="_blank" rel="noopener noreferrer"
-              style={{ background: color, color: "#fff", padding: "14px 28px", borderRadius: 10, fontWeight: 700, fontSize: 16, textDecoration: "none" }}>
-              Réserver une démo
-            </button>
-            <a href="https://wa.me/261386626100?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20EntityResolution%20avec%20Wikolabs." target="_blank" rel="noopener noreferrer"
-              style={{ background: "#25d366", color: "#fff", padding: "14px 28px", borderRadius: 10, fontWeight: 700, fontSize: 16, textDecoration: "none" }}>
-              WhatsApp
-            </a>
-          </div>
-          {/* Metrics */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 16 }}>
-            {[
-              { value: "99.3%", label: "précision" },
-              { value: "<10ms", label: "par record" },
-              { value: "Millions", label: "de records" },
-              { value: "Zero-config", label: "démarrage" },
-            ].map((m) => (
-              <div key={m.label} style={{ background: "#fff", borderRadius: 12, padding: "20px 16px", boxShadow: "0 1px 4px rgba(245,158,11,0.1)" }}>
-                <div style={{ fontFamily: "var(--font-display)", fontSize: 28, fontWeight: 800, color }}>{m.value}</div>
-                <div style={{ fontSize: 13, color: "#6b7280", marginTop: 4 }}>{m.label}</div>
-              </div>
-            ))}
+      <section style={{ padding:"100px 40px 80px", maxWidth:1000, margin:"0 auto", textAlign:"center", position:"relative" }}>
+        <div style={{ position:"absolute", top:-60, left:"50%", transform:"translateX(-50%)", width:700, height:600, background:`radial-gradient(ellipse at 50% 30%, ${accentGlow} 0%, transparent 60%)`, pointerEvents:"none" }} />
+        <div style={{ display:"inline-flex", alignItems:"center", gap:8, marginBottom:24, background:accentDim, border:`1px solid ${accentBorder}`, borderRadius:100, padding:"6px 18px", animation:"fadeUp .5s ease both" }}>
+          <span style={{ width:7, height:7, borderRadius:"50%", background:accent, display:"inline-block", animation:"pulseDot 2s ease-in-out infinite" }} />
+          <span style={{ color:accent, fontSize:11.5, fontWeight:700, letterSpacing:"2px", textTransform:"uppercase" }}>{P.tagLabel}</span>
+        </div>
+        <h1 className="wk-hero-title" style={{ fontSize:"clamp(2.6rem,6vw,5rem)", fontWeight:700, lineHeight:1.08, letterSpacing:"-0.03em", marginBottom:28, fontFamily:"'Instrument Serif',Georgia,serif", animation:"fadeUp .5s .08s ease both" }}>
+          {P.taglines.map((line, i) => (<span key={i} style={{ display:"block", color:i===P.taglineAccentIdx?accent:txt1, fontStyle:i===P.taglineAccentIdx?"italic":"normal" }}>{line}</span>))}
+        </h1>
+        <p style={{ fontSize:"1.1rem", color:txt2, lineHeight:1.72, maxWidth:580, margin:"0 auto 48px", animation:"fadeUp .5s .16s ease both" }}>{P.desc}</p>
+        <div style={{ display:"flex", flexWrap:"wrap", justifyContent:"center", gap:14, marginBottom:44, animation:"fadeUp .5s .24s ease both" }}>
+          {P.metrics.map(m => (<div key={m.label} style={{ background:card, border:`1px solid ${border}`, borderRadius:18, padding:"14px 22px", textAlign:"center", minWidth:118 }}><div style={{ fontSize:"1.7rem", fontWeight:800, color:txt1, letterSpacing:"-1.5px", lineHeight:1 }}>{m.value}</div><div style={{ fontSize:"0.62rem", color:txt3, textTransform:"uppercase", letterSpacing:"1.5px", marginTop:5 }}>{m.label}</div></div>))}
+        </div>
+        <div style={{ display:"flex", flexWrap:"wrap", gap:12, justifyContent:"center", animation:"fadeUp .5s .32s ease both" }}>
+          <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' className="wk-btn" style={{ background:gold, color:"#04080F", border:"none", borderRadius:10, padding:"14px 28px", fontWeight:700, fontSize:15, cursor:"pointer", display:"flex", alignItems:"center", gap:8, fontFamily:"inherit" }}>📅 {P.ctaPrimary}</button>
+          <a href={`https://wa.me/261386626100?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20${encodeURIComponent(P.waText)}%20avec%20Wikolabs.`} target="_blank" rel="noopener noreferrer" className="wk-wa" style={{ background:"#25d366", color:"#fff", borderRadius:10, padding:"14px 28px", fontWeight:700, fontSize:15, textDecoration:"none", display:"flex", alignItems:"center", gap:8 }}>💬 WhatsApp</a>
+        </div>
+      </section>
+      <section id="features" style={{ padding:"80px 40px", maxWidth:1100, margin:"0 auto" }}>
+        <div style={{ textAlign:"center", marginBottom:52 }}><p style={{ fontSize:"0.68rem", color:gold, letterSpacing:"3px", textTransform:"uppercase", fontWeight:700, marginBottom:14 }}>Fonctionnalites</p><h2 style={{ fontSize:"clamp(1.8rem,3.5vw,2.8rem)", fontWeight:700, color:txt1, letterSpacing:"-0.02em", fontFamily:"'Instrument Serif',Georgia,serif", lineHeight:1.15 }}>Des donnees enfin <em style={{ fontStyle:"italic", color:gold }}>dignes de confiance</em></h2></div>
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))", gap:20 }}>
+          {P.features.map((f, i) => (<div key={f.title} className="wk-card" style={{ background:card, border:`1px solid ${border}`, borderRadius:20, padding:"28px 28px 24px", position:"relative", overflow:"hidden" }}><div style={{ position:"absolute", top:0, left:0, right:0, height:2, background:`linear-gradient(90deg,transparent,${i===0?gold:accent},transparent)`, opacity:.6 }} /><div style={{ fontSize:"2rem", marginBottom:16 }}>{f.icon}</div><h3 style={{ fontSize:"1.05rem", fontWeight:700, color:txt1, marginBottom:10 }}>{f.title}</h3><p style={{ fontSize:"0.88rem", color:txt2, lineHeight:1.7, margin:0 }}>{f.desc}</p></div>))}
+        </div>
+      </section>
+      <section id="process" style={{ padding:"80px 40px", background:bg2 }}>
+        <div style={{ maxWidth:860, margin:"0 auto" }}>
+          <div style={{ textAlign:"center", marginBottom:48 }}><p style={{ fontSize:"0.68rem", color:gold, letterSpacing:"3px", textTransform:"uppercase", fontWeight:700, marginBottom:14 }}>Comment ca marche</p><h2 style={{ fontSize:"clamp(1.8rem,3.5vw,2.8rem)", fontWeight:700, color:txt1, letterSpacing:"-0.02em", fontFamily:"'Instrument Serif',Georgia,serif" }}>Base propre en <em style={{ fontStyle:"italic", color:accent }}>24 heures</em></h2></div>
+          <div style={{ display:"flex", flexDirection:"column", gap:14 }}>
+            {P.steps.map((s, i) => (<div key={s.num} style={{ display:"flex", alignItems:"flex-start", gap:22, background:card, border:`1px solid ${border}`, borderRadius:18, padding:"22px 26px" }}><div style={{ flexShrink:0, width:46, height:46, background:i===0?goldDim:accentDim, border:`1px solid ${i===0?goldBorder:accentBorder}`, borderRadius:14, display:"flex", alignItems:"center", justifyContent:"center", color:i===0?gold:accent, fontWeight:800, fontSize:15 }}>{s.num}</div><div><h3 style={{ fontSize:"1rem", fontWeight:700, color:txt1, marginBottom:6, lineHeight:1.3 }}>{s.title}</h3><p style={{ fontSize:"0.87rem", color:txt2, lineHeight:1.7, margin:0 }}>{s.desc}</p></div></div>))}
           </div>
         </div>
       </section>
-
-      {/* FEATURES */}
-      <section style={{ background: "#fff", padding: "72px 24px" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <h2 style={{ fontFamily: "var(--font-display)", fontSize: 36, fontWeight: 800, color: "#78350f", textAlign: "center", marginBottom: 48 }}>
-            Une source de vérité unique pour chaque client
-          </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24 }}>
-            {[
-              {
-                icon: "🔗",
-                title: "Matching ML multi-source",
-                desc: "Nom, email, téléphone, adresse, comportement — tous les signaux sont combinés pour relier les profils éparpillés sur vos systèmes.",
-              },
-              {
-                icon: "🔄",
-                title: "Déduplication en temps réel",
-                desc: "À chaque nouvelle création de compte ou import CRM, EntityResolution détecte et fusionne les doublons immédiatement.",
-              },
-              {
-                icon: "📋",
-                title: "Golden record unifié",
-                desc: "Un profil maître consolidé par client, synchronisé automatiquement vers votre CRM, DWH et outils marketing. Une seule source de vérité.",
-              },
-            ].map((f) => (
-              <div key={f.title} style={{ background: colorLight, borderRadius: 16, padding: 32, border: "1px solid #fde68a" }}>
-                <div style={{ fontSize: 36, marginBottom: 16 }}>{f.icon}</div>
-                <h3 style={{ fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 700, color: "#78350f", marginBottom: 12 }}>{f.title}</h3>
-                <p style={{ color: "#4b5563", lineHeight: 1.7, fontSize: 15 }}>{f.desc}</p>
-              </div>
-            ))}
+      <section style={{ padding:"80px 40px", maxWidth:900, margin:"0 auto" }}>
+        <div style={{ textAlign:"center", marginBottom:44 }}><p style={{ fontSize:"0.68rem", color:gold, letterSpacing:"3px", textTransform:"uppercase", fontWeight:700, marginBottom:14 }}>Temoignages</p><h2 style={{ fontSize:"clamp(1.6rem,3vw,2.4rem)", fontWeight:700, color:txt1, fontFamily:"'Instrument Serif',Georgia,serif" }}>Ce qu'en disent nos clients</h2></div>
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(340px,1fr))", gap:20 }}>
+          {P.testimonials.map((t, i) => (<div key={i} style={{ background:card, border:`1px solid ${border}`, borderLeft:`3px solid ${i===0?gold:accent}`, borderRadius:20, padding:"26px 26px 22px" }}><p style={{ fontSize:"0.92rem", color:txt2, lineHeight:1.75, fontStyle:"italic", marginBottom:20 }}>&ldquo;{t.quote}&rdquo;</p><div style={{ display:"flex", alignItems:"center", gap:12 }}><div style={{ width:38, height:38, borderRadius:"50%", background:i===0?goldDim:accentDim, border:`1px solid ${i===0?goldBorder:accentBorder}`, display:"flex", alignItems:"center", justifyContent:"center", fontSize:16 }}>👤</div><div><div style={{ fontSize:"0.9rem", fontWeight:700, color:txt1 }}>{t.author}</div><div style={{ fontSize:"0.72rem", color:txt3 }}>{t.role}</div></div></div></div>))}
+        </div>
+      </section>
+      <section id="cta" style={{ padding:"0 40px 100px", maxWidth:860, margin:"0 auto" }}>
+        <div style={{ background:card, border:`1px solid ${goldBorder}`, borderRadius:24, padding:"64px 48px", textAlign:"center", backgroundImage:`radial-gradient(ellipse at 50% 0%, ${goldDim} 0%, transparent 65%)` }}>
+          <p style={{ fontSize:"0.68rem", color:gold, letterSpacing:"3px", textTransform:"uppercase", fontWeight:700, marginBottom:16 }}>Demarrer</p>
+          <h2 style={{ fontSize:"clamp(1.8rem,3.5vw,2.8rem)", fontWeight:700, color:txt1, marginBottom:14, letterSpacing:"-0.02em", fontFamily:"'Instrument Serif',Georgia,serif" }}>{P.ctaTitle}</h2>
+          <p style={{ color:txt2, fontSize:"1rem", marginBottom:36, lineHeight:1.7 }}>{P.ctaDesc}</p>
+          <div style={{ display:"flex", flexWrap:"wrap", gap:12, justifyContent:"center" }}>
+            <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' className="wk-btn" style={{ background:gold, color:"#04080F", border:"none", borderRadius:10, padding:"14px 28px", fontWeight:700, fontSize:15, cursor:"pointer", display:"flex", alignItems:"center", gap:8, fontFamily:"inherit" }}>📅 {P.ctaPrimary}</button>
+            <a href={`https://wa.me/261386626100?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20${encodeURIComponent(P.waText)}%20avec%20Wikolabs.`} target="_blank" rel="noopener noreferrer" className="wk-wa" style={{ background:"#25d366", color:"#fff", borderRadius:10, padding:"14px 28px", fontWeight:700, fontSize:15, textDecoration:"none", display:"flex", alignItems:"center", gap:8 }}>💬 WhatsApp</a>
           </div>
         </div>
       </section>
-
-      {/* HOW IT WORKS */}
-      <section style={{ background: colorLight, padding: "72px 24px" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto" }}>
-          <h2 style={{ fontFamily: "var(--font-display)", fontSize: 36, fontWeight: 800, color: "#78350f", textAlign: "center", marginBottom: 48 }}>
-            Comment ça marche ?
-          </h2>
-          <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-            {[
-              {
-                step: "01",
-                title: "Connectez vos sources",
-                desc: "CRM, ERP, base marketing, e-commerce — connexion via API ou export CSV. Toutes les sources sont normalisées automatiquement.",
-              },
-              {
-                step: "02",
-                title: "Matching & scoring",
-                desc: "Le modèle calcule un score de similarité entre chaque paire d'entités et propose les fusions avec un niveau de confiance.",
-              },
-              {
-                step: "03",
-                title: "Golden record unifié",
-                desc: "Les entités confirmées sont fusionnées en un profil maître et redistribuées vers tous vos systèmes en temps réel ou en batch.",
-              },
-            ].map((s) => (
-              <div key={s.step} style={{ display: "flex", gap: 24, alignItems: "flex-start", background: "#fff", borderRadius: 16, padding: 28 }}>
-                <div style={{ fontFamily: "var(--font-display)", fontSize: 40, fontWeight: 900, color: "#fde68a", minWidth: 56 }}>{s.step}</div>
-                <div>
-                  <h3 style={{ fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 700, color: "#78350f", marginBottom: 8 }}>{s.title}</h3>
-                  <p style={{ color: "#4b5563", lineHeight: 1.7, fontSize: 15 }}>{s.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section style={{ background: color, padding: "72px 24px", textAlign: "center" }}>
-        <div style={{ maxWidth: 600, margin: "0 auto" }}>
-          <h2 style={{ fontFamily: "var(--font-display)", fontSize: 36, fontWeight: 800, color: "#fff", marginBottom: 16 }}>
-            Des données clients propres dès cette semaine
-          </h2>
-          <p style={{ color: "#fef3c7", fontSize: 18, marginBottom: 36 }}>Audit de qualité gratuit sur votre base.</p>
-          <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' type="button" target="_blank" rel="noopener noreferrer"
-              style={{ background: "#fff", color, padding: "14px 28px", borderRadius: 10, fontWeight: 700, fontSize: 16, textDecoration: "none" }}>
-              Réserver une démo
-            </button>
-            <a href="https://wa.me/261386626100?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20EntityResolution%20avec%20Wikolabs." target="_blank" rel="noopener noreferrer"
-              style={{ background: "#25d366", color: "#fff", padding: "14px 28px", borderRadius: 10, fontWeight: 700, fontSize: 16, textDecoration: "none" }}>
-              WhatsApp
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* FOOTER */}
-      <footer style={{ background: "#78350f", color: "#fcd34d", padding: "32px 24px", textAlign: "center" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <div style={{ fontFamily: "var(--font-display)", fontSize: 18, fontWeight: 700, color: "#fff", marginBottom: 8 }}>EntityResolution</div>
-          <p style={{ fontSize: 14, marginBottom: 4 }}>
-            <a href="mailto:team@wikolabs.com" style={{ color: "#fcd34d", textDecoration: "none" }}>team@wikolabs.com</a>
-            {" · "}
-            <a href="https://wikolabs.com" target="_blank" rel="noopener noreferrer" style={{ color: "#fcd34d", textDecoration: "none" }}>wikolabs.com</a>
-          </p>
-          <p style={{ color: "#fcd34d", marginTop: 8, fontSize: 13, display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-            <a href="mailto:team@wikolabs.com" style={{ color: "#fcd34d", textDecoration: "none" }}>team@wikolabs.com</a>
-            <span>·</span>
-            <a href="tel:+261386626100" style={{ color: "#fcd34d", textDecoration: "none" }}>+261 38 66 261 00</a>
-            <span>·</span>
-            <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' type="button" target="_blank" rel="noopener noreferrer" style={{ color: "#fcd34d", textDecoration: "none" }}>Prendre RDV</button>
-          </p>
-          <p style={{ fontSize: 13, color: "#f59e0b" }}>© 2026 Wikolabs. Tous droits réservés.</p>
+      <footer style={{ borderTop:`1px solid ${border}`, padding:"32px 40px" }}>
+        <div style={{ maxWidth:1200, margin:"0 auto", display:"flex", flexWrap:"wrap", justifyContent:"space-between", alignItems:"center", gap:16 }}>
+          <div><span style={{ fontWeight:800, fontSize:16, color:txt1 }}>{P.name}</span><span style={{ color:gold }}>.</span><span style={{ display:"block", fontSize:12, color:txt3, marginTop:3 }}>{P.footerTagline}</span></div>
+          <p style={{ fontSize:13, color:txt3 }}>© 2026 {P.name} — Un produit <a href="https://wikolabs.com" style={{ color:txt2, textDecoration:"none" }}>Wikolabs</a></p>
+          <div style={{ display:"flex", flexWrap:"wrap", gap:16, fontSize:13, alignItems:"center" }}><a href="mailto:team@wikolabs.com" style={{ color:txt3, textDecoration:"none" }}>team@wikolabs.com</a><span style={{ color:txt3 }}>·</span><button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' style={{ background:"none", border:"none", color:txt3, fontSize:13, cursor:"pointer", fontFamily:"inherit", padding:0 }}>Prendre RDV</button></div>
         </div>
       </footer>
-    </main>
+    </div>
   );
 }
